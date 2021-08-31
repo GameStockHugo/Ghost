@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scene/acc/ProgressBar_light.tscn" type="PackedScene" id=1]
+[ext_resource path="res://image/decor/acc/Tombe.png" type="Texture" id=2]
+[ext_resource path="res://code/exclamation/Tombe.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20.8937, 45.1015 )
+
+[node name="Tombe" type="KinematicBody2D"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 14.6158, -26.2912 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+
+[node name="detect_lampe" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_lampe"]
+position = Vector2( 3.67545, -13.2316 )
+shape = SubResource( 1 )
+
+[node name="ProgressBar" parent="." instance=ExtResource( 1 )]
+margin_left = -35.5895
+margin_top = 36.3246
+margin_right = 40.4105
+margin_bottom = 63.3246
+max_value = 50.0
+[connection signal="body_entered" from="detect_lampe" to="." method="_on_detect_lampe_body_entered"]
+[connection signal="body_exited" from="detect_lampe" to="." method="_on_detect_lampe_body_exited"]

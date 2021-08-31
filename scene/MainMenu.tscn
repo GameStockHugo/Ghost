@@ -1,0 +1,182 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://text/Adventurer.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://image/light/light_ora/light_ora_0.png" type="Texture" id=2]
+[ext_resource path="res://image/light/light_ora/light_ora_2.png" type="Texture" id=3]
+[ext_resource path="res://image/light/light_ora/light_ora_1.png" type="Texture" id=4]
+[ext_resource path="res://code/MainMenu.gd" type="Script" id=5]
+[ext_resource path="res://shader/Transition.shader" type="Shader" id=6]
+[ext_resource path="res://image/transition/from_center.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="AnimatedTexture" id=3]
+frames = 3
+frame_0/texture = ExtResource( 2 )
+frame_0/delay_sec = 0.1
+frame_1/texture = ExtResource( 4 )
+frame_1/delay_sec = 0.1
+frame_2/texture = ExtResource( 3 )
+frame_2/delay_sec = 0.1
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 6 )
+shader_param/cutoff = 0.0
+shader_param/smooth_size = 0.218
+shader_param/color = Color( 0, 0, 0, 1 )
+shader_param/mask = ExtResource( 7 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="MainMenu" type="MarginContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.254902, 0.254902, 0.254902, 0.580392 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+modulate = Color( 0.788235, 0.301961, 0.301961, 0.733333 )
+color = Color( 0, 0, 0, 0 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 387.0
+margin_top = 197.0
+margin_right = 637.0
+margin_bottom = 402.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+margin_right = 250.0
+margin_bottom = 100.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer"]
+margin_right = 250.0
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 1 )
+text = "Ghost"
+
+[node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 104.0
+margin_right = 250.0
+margin_bottom = 205.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2"]
+margin_left = 19.0
+margin_right = 230.0
+margin_bottom = 101.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_right = 211.0
+margin_bottom = 31.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer"]
+margin_left = 9.0
+margin_right = 202.0
+margin_bottom = 31.0
+
+[node name="select_1" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_right = 13.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 2 )
+text = ">"
+
+[node name="Mode_H" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_left = 17.0
+margin_right = 193.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 2 )
+text = "History mode"
+
+[node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 35.0
+margin_right = 211.0
+margin_bottom = 66.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2"]
+margin_right = 211.0
+margin_bottom = 31.0
+
+[node name="select_2" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer"]
+margin_right = 13.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 7, 0 )
+custom_fonts/font = SubResource( 2 )
+text = ">"
+
+[node name="Mode_S" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer"]
+margin_left = 17.0
+margin_right = 211.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 183, 0 )
+custom_fonts/font = SubResource( 2 )
+text = "Survival mode"
+
+[node name="CenterContainer3" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 70.0
+margin_right = 211.0
+margin_bottom = 101.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3"]
+margin_left = 5.0
+margin_right = 205.0
+margin_bottom = 31.0
+
+[node name="select_3" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer"]
+margin_right = 13.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 7, 16 )
+custom_fonts/font = SubResource( 2 )
+text = ">"
+
+[node name="Exit" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer"]
+margin_left = 17.0
+margin_right = 200.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 183, 0 )
+custom_fonts/font = SubResource( 2 )
+text = "Exit"
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 504, 304 )
+texture = SubResource( 3 )
+texture_scale = 8.0
+color = Color( 0.835294, 0.933333, 0.282353, 1 )
+
+[node name="Transition" type="ColorRect" parent="."]
+material = SubResource( 4 )
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimaTransistion" type="AnimationPlayer" parent="Transition"]
+autoplay = "idle"
+anims/idle = SubResource( 5 )

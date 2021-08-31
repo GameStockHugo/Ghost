@@ -1,0 +1,234 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://image/light/light_cone/light_cone_1.png" type="Texture" id=1]
+[ext_resource path="res://image/light/light_cone/light_cone_2.png" type="Texture" id=2]
+[ext_resource path="res://image/player/player_2.png" type="Texture" id=3]
+[ext_resource path="res://image/light/light_cone/light_cone_0.png" type="Texture" id=4]
+[ext_resource path="res://image/light/light_ora/light_ora_0.png" type="Texture" id=5]
+[ext_resource path="res://image/light/light_ora/light_ora_2.png" type="Texture" id=6]
+[ext_resource path="res://image/light/light_ora/light_ora_1.png" type="Texture" id=7]
+[ext_resource path="res://image/light/lumiere.png" type="Texture" id=8]
+[ext_resource path="res://code/player_2.gd" type="Script" id=9]
+[ext_resource path="res://image/player/Ombre.png" type="Texture" id=10]
+[ext_resource path="res://scene/acc/ProgressBar_light.tscn" type="PackedScene" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 14.4161, 15.3816 )
+
+[sub_resource type="AnimatedTexture" id=6]
+frames = 3
+frame_0/texture = ExtResource( 5 )
+frame_0/delay_sec = 0.1
+frame_1/texture = ExtResource( 7 )
+frame_1/delay_sec = 0.1
+frame_2/texture = ExtResource( 6 )
+frame_2/delay_sec = 0.1
+
+[sub_resource type="AnimatedTexture" id=3]
+frames = 3
+frame_0/texture = ExtResource( 4 )
+frame_0/delay_sec = 0.1
+frame_1/texture = ExtResource( 1 )
+frame_1/delay_sec = 0.1
+frame_2/texture = ExtResource( 2 )
+frame_2/delay_sec = 0.1
+
+[sub_resource type="Animation" id=4]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "mort"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0064 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 9.052 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[node name="player_2" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 9 )
+
+[node name="Ombre" type="Sprite" parent="."]
+modulate = Color( 0.109804, 0.109804, 0.109804, 0.392157 )
+position = Vector2( -0.647064, 16.5003 )
+scale = Vector2( 1.5, 1 )
+texture = ExtResource( 10 )
+
+[node name="lumiere" type="Sprite" parent="."]
+visible = false
+position = Vector2( 504, -16 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -3.14697, 15.3529 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+hframes = 8
+frame = 4
+
+[node name="Detect_enemie" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detect_enemie"]
+position = Vector2( -1.61768, 0.647072 )
+shape = SubResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0, -16 )
+scale = Vector2( 1.8, 1.8 )
+texture = SubResource( 6 )
+texture_scale = 2.5
+color = Color( 1, 0.462745, 0.462745, 1 )
+mode = 2
+
+[node name="bras" type="KinematicBody2D" parent="."]
+collision_layer = 8
+collision_mask = 16
+
+[node name="Light2D" type="Light2D" parent="bras"]
+texture = SubResource( 3 )
+offset = Vector2( 120, 0 )
+texture_scale = 2.0
+color = Color( 1, 0.470588, 0.470588, 1 )
+energy = 1.2
+range_height = 0.1
+shadow_enabled = true
+shadow_color = Color( 0.196078, 0, 1, 0 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="bras"]
+position = Vector2( -16, 0 )
+build_mode = 1
+polygon = PoolVector2Array( 792, -56, 16, 0, 16, 8, 792, 56 )
+
+[node name="detec_mur" type="RayCast2D" parent="bras"]
+enabled = true
+cast_to = Vector2( 350, 0 )
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/idle = SubResource( 4 )
+anims/mort = SubResource( 7 )
+anims/walk = SubResource( 5 )
+
+[node name="ProgressBar" parent="." instance=ExtResource( 11 )]
+margin_left = -33.467
+margin_top = 30.8838
+margin_right = 42.533
+margin_bottom = 57.8838
+[connection signal="body_entered" from="Detect_enemie" to="." method="_on_Detect_enemie_body_entered"]
